@@ -1,0 +1,4 @@
+node_modules
+dst
+src/secret.ts
+.env

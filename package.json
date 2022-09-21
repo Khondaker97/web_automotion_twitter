@@ -1,0 +1,33 @@
+{
+  "name": "twittomation",
+  "version": "1.0.0",
+  "description": "automate some tweet of twitter",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run dst && node dst/index.js",
+    "start:dev": "ts-node ./src/index.ts",
+    "build": "rimraf ./dst && tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/khondaker97/twittomation"
+  },
+  "keywords": [
+    "automation",
+    "puppeteer",
+    "node",
+    "js",
+    "typescript"
+  ],
+  "author": "khondaker.tm",
+  "license": "ISC",
+  "dependencies": {
+    "puppeteer": "^18.0.2"
+  },
+  "devDependencies": {
+    "@types/node": "^18.7.18",
+    "rimraf": "^3.0.2",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.8.3"
+  }
+}
