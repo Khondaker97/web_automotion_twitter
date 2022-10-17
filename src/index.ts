@@ -29,19 +29,21 @@ let authenticate = async (page: puppeteer.Page) => {
       );
       if (buttons.length > 0) {
         await (buttons[0] as ElementHandle<HTMLElement>).click();
-        await page.waitForNavigation({ timeout: 1000 });
       }
+      await page.waitForNetworkIdle({ timeout: 1000 });
     }
-    // if (password_input.length > 0) {
-    //   await password_input[0].focus();
-    //   await page.keyboard.type(password);
-    //   await Promise.all([
-    //     page.click(
-    //       selector
-    //     ),
-    //     page.waitForNavigation({ timeout: 1000 }),
-    //   ]);
-    // }
+
+    if (password_input.length > 0) {
+      await password_input[0].focus();
+      await page.keyboard.type(password);
+      let buttons = await page.$x(
+        `//div[@role="button"]//span[text()="Log in"]`
+      );
+      if (buttons.length > 0) {
+        await (buttons[0] as ElementHandle<HTMLElement>).click();
+      }
+      await page.waitForNavigation({ timeout: 1000 });
+    }
   } catch (error) {
     console.log("error in auth", error);
   }
@@ -64,6 +66,7 @@ let begins = async () => {
 
     await sleep_for(page, 1000, 4000);
     await authenticate(page);
+    console.log("all is ok!");
   } catch (error) {
     console.log(error);
   }
